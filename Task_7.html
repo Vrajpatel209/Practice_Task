@@ -1,12 +1,27 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Task_7</title>
 </head>
-<body>
-    <script>
 
-        
+<body>
+    <div id="Display" onclick="readMore()"></div>
+    <script>
+        let text = "First visuals of the Ram Lalla idol with full dress and ornaments has been released at the Shri Ram Janmaboomi Temple in Ayodhya. The first look of the 51-inch idol was revealed to the world after PM Modi completes the ceremony inside the Ram Mandir. The idol has been sculpted by Karnataka's Arun Yogiraj portraying Ram Lalla as a five-year-old. The idol was selected over two others since it captured innocence, divinity, androyalty at the finest, the Trust authorities said.The visuals was released while PM Narendra Modi completing the pran pratishthan ceremony in Ayodhya Ram Mandir. Prime Minister Narendra Modi, designated the chief yajman by the temple trust, led the rituals and unveiled the beautiful Ram Lalla idol adorned in gold and yellow.";
+        let readText = true;
+
+        function readMore() {
+            if (readText == true) {
+                document.getElementById("Display").innerHTML = text.slice(0, 25) + '...ReadMore';
+            }
+            else {
+                document.getElementById("Display").innerHTML = text + '...ReadLess';
+            }
+            readText != readText;
+        }
+        readMore();
     </script>
 </body>
+
 </html>
