@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task_6</title>
+</head>
+<body>
+    <div id="display"></div>
+    <script>
+        /*
+        for (let row = 1; row <= 4; row++) {
+            let str = '';
+
+            for (let column = 1; column <= row; column++) {
+                str += '*' //row; * etc
+            }
+            document.getElementById("display").innerHTML += str + '<br>';
+        }
+        O / P :
+        *
+        **
+        ***
+        ****
+        */
+       //---------------------------------------------------------------------------------- 
+       /*
+        for (let row = 1; row <= 4; row++) {
+            let str = '';
+
+            for (let column = 1; column <= row; column++) {
+                str += column //row; * etc
+            }
+            document.getElementById("display").innerHTML += str + '<br>';
+        }
+        O / P :
+        1
+        12
+        123
+        1234
+        */
+       //---------------------------------------------------------------------------------- 
+       /*
+        for(let row = 4; row >= 1; row--){
+            let str = '';
+
+            for(let column = 1;column<=row;column++){
+                str += column //row; * etc
+            }
+            document.getElementById("display").innerHTML += str + '<br>';
+        }
+        O/P :
+        1234
+        123
+        12
+        1
+        */
+        //----------------------------------------------------------------------------------
+        
+        for (let row = 1; row <= 4; row++) {
+            let str = '';
+
+            for (let column = 4; column >= row; column--) {
+                str += column //row; * etc
+            }
+            document.getElementById("display").innerHTML += str + '<br>';
+        }
+        /*
+        O / P :
+        4321
+        432
+        43
+        4
+        */
+        //---------------------------------------------------------------------------------- 
+    </script>
+</body>
+</html>

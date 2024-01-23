@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TASK2</title>
+</head>
+<body>
+    <button onclick="addition(a,b)">Addition</button> <button onclick="subtraction(a,b)">Subtract</button> <button onclick="multiplication(a,b)">Multiply</button> <button onclick="division(a,b)">Division</button><br><br>
+    OUTPUT : <div id="Display"></div>
+    <script>
+        let a = 10;
+        let b = 5;
+
+        function addition(x,y){
+            document.getElementById("Display").innerHTML = x + y;
+        }
+
+        function subtraction(x,y){
+            document.getElementById("Display").innerHTML = x - y;
+        }
+
+        function multiplication(x,y){
+            document.getElementById("Display").innerHTML = x * y;
+        }
+
+        function division(x,y){
+            document.getElementById("Display").innerHTML = x / y;
+        }
+
+
+    </script>
+</body>
+</html>

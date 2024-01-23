@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Task_4</title>
+</head>
+
+<body>
+    <input type="number" id="scores" value="">
+    <button onclick="checkGrades()">Check_Grade</button>
+    <div id="displayGrades"></div>
+
+    <script>
+        function checkGrades() {
+            let score = document.getElementById("scores").value;
+            if (score >= 70 && score <= 100) {
+                document.getElementById("displayGrades").innerHTML = "Distinction";
+            }
+            else if(score >= 60 && score < 70){
+                document.getElementById("displayGrades").innerHTML = "First Class";
+            }
+            else if(score >= 50 && score < 60){
+                document.getElementById("displayGrades").innerHTML = "Second Class";
+            }
+            else if(score >= 35 && score < 50){
+                document.getElementById("displayGrades").innerHTML = "Pass Class";
+            }
+            else {
+                document.getElementById("displayGrades").innerHTML = "Better Luck Next Time";
+            }
+        }
+    </script>
+</body>
+
+</html>
+
+<!-- f12 => console -->

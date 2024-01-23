@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Task_5</title>
+</head>
+
+<body>
+    <input type="number" id="billAmount" value="">
+    <button onclick="checkDiscount()">Check_Discount</button>
+    <div id="displayDiscount"></div>
+    <div id="discountedAmount"></div>
+
+    <script>
+        function checkDiscount() {
+            let Amount = document.getElementById("billAmount").value;
+
+            if (Amount > 2000 && Amount <= 5000) {
+                document.getElementById("displayDiscount").innerHTML = "You Secured 5% Discount";
+                //let DiscountValue = (Amount*5)/100;
+                //document.getElementById("discountedAmount").innerHTML = Amount - DiscountValue;
+            }
+            else if (Amount > 5000 && Amount <= 10000) {
+                document.getElementById("displayDiscount").innerHTML = "You Secured 10% Discount";
+                //let DiscountValue = (Amount*10)/100;
+                //document.getElementById("discountedAmount").innerHTML = Amount - DiscountValue;
+            }
+            else if (Amount > 10000 && Amount <= 15000) {
+                document.getElementById("displayDiscount").innerHTML = "You Secured 15% Discount";
+                //let DiscountValue = (Amount*15)/100;
+                //document.getElementById("discountedAmount").innerHTML = Amount - DiscountValue;
+            }
+            else if (Amount > 15000) {
+                document.getElementById("displayDiscount").innerHTML = "You Secured 20% Discount";
+                //let DiscountValue = (Amount*20)/100;
+                //document.getElementById("discountedAmount").innerHTML = Amount - DiscountValue;
+            }
+            else {
+                document.getElementById("displayDiscount").innerHTML = "Shop above Rs.2000/- to avail discount offers";
+            }
+        }
+    </script>
+</body>
+
+</html>
+
+<!-- f12 => console -->
