@@ -6,21 +6,39 @@
 </head>
 
 <body>
-    <div id="Display" onclick="readMore()"></div>
+
+    <div id="Display" onclick="readMore()"></div><br><br>
+    <div id="display" onclick="readLess()"></div>
     <script>
-        let text = "First visuals of the Ram Lalla idol with full dress and ornaments has been released at the Shri Ram Janmaboomi Temple in Ayodhya. The first look of the 51-inch idol was revealed to the world after PM Modi completes the ceremony inside the Ram Mandir. The idol has been sculpted by Karnataka's Arun Yogiraj portraying Ram Lalla as a five-year-old. The idol was selected over two others since it captured innocence, divinity, androyalty at the finest, the Trust authorities said.The visuals was released while PM Narendra Modi completing the pran pratishthan ceremony in Ayodhya Ram Mandir. Prime Minister Narendra Modi, designated the chief yajman by the temple trust, led the rituals and unveiled the beautiful Ram Lalla idol adorned in gold and yellow.";
+        /*
+        let Text = "First visuals of the Ram Lalla idol with full dress and ornaments has been released at the Shri Ram Janmaboomi Temple in Ayodhya. The first look of the 51-inch idol was revealed to the world after PM Modi completes the ceremony inside the Ram Mandir. The idol has been sculpted by Karnataka's Arun Yogiraj portraying Ram Lalla as a five-year-old. The idol was selected over two others since it captured innocence, divinity, androyalty at the finest, the Trust authorities said.The visuals was released while PM Narendra Modi completing the pran pratishthan ceremony in Ayodhya Ram Mandir. Prime Minister Narendra Modi, designated the chief yajman by the temple trust, led the rituals and unveiled the beautiful Ram Lalla idol adorned in gold and yellow.";
         let readText = true;
 
         function readMore() {
             if (readText == true) {
-                document.getElementById("Display").innerHTML = text.slice(0, 25) + '...ReadMore';
+                document.getElementById("Display").innerHTML = Text.slice(0, 25) + '...ReadMore';
             }
             else {
-                document.getElementById("Display").innerHTML = text + '...ReadLess';
+                document.getElementById("Display").innerHTML = Text + '...ReadLess';
             }
             readText = !readText;
         }
         readMore();
+        */
+        //------------------------------------------------------------------------------------------------------------------
+        let a = "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repudiandae consequatur architecto repellendus totam suscipit nostrum expedita voluptatibus non fugiat voluptas, vero eos minus molestias necessitatibus ipsam corporis dolorum adipisci, ad accusamus laborum quasi soluta. Mollitia cupiditate corporis, quasi blanditiis voluptatibus distinctio quo aspernatur nam accusamus aliquid nulla qui dolores eum laudantium vel totam iure, adipisci nostrum architecto odit? Iste a alias voluptate quod autem! Repudiandae ipsum ad laborum, voluptates, rerum hic perspiciatis eius doloribus, accusamus a non. Perferendis unde qui recusandae, dicta dolorem animi eligendi cupiditate, nulla ducimus illo ut modi cumque eveniet? Dolore sunt doloremque rerum mollitia quia est suscipit fugit nisi? Ipsum repellat modi repellendus eaque neque sit eius odit officia corporis natus amet, laboriosam quo reiciendis eum optio doloremque! Quam voluptatem ipsa repudiandae commodi itaque provident quisquam architecto, possimus quis a error rerum labore cupiditate ex qui et unde dicta sequi tenetur dolor sapiente? Cum culpa provident explicabo consequuntur, voluptas fugit necessitatibus velit, perspiciatis illum reiciendis, repellat possimus dolorum minima dolores eum porro vel! Magni iste dolorum optio voluptate dolor eaque explicabo at totam aut, eligendi ad ut vitae error mollitia ipsum? Libero perferendis facilis vero nulla repellendus odit temporibus obcaecati maxime, cumque voluptas quaerat veniam. Qui ullam sint quaerat culpa. Quis ratione voluptatem commodi repellendus obcaecati dolore quia totam deleniti, repellat minus in, cupiditate eos! Soluta voluptatibus, cupiditate voluptatem reprehenderit quod veritatis ab excepturi possimus, sed voluptate ullam sit unde et suscipit consectetur dignissimos, necessitatibus ipsa. Temporibus corrupti nam accusamus debitis perspiciatis praesentium eveniet, ratione assumenda?";
+        let text1 = true;
+
+        function readLess() {
+            if (text1 == true) {
+                document.getElementById('display').innerHTML = a.slice(0, 5) + '..Read More';
+            }
+            else {
+                document.getElementById('display').innerHTML = a + '..Read Less';
+            }
+            text1 = !text1;
+        }
+        readLess();
     </script>
 </body>
 
