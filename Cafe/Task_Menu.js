@@ -147,3 +147,6 @@ const menu = [
   
     display(categoryfilters);
   }
+
+
+  //A-Z & Z-A sorting in Menu
