@@ -148,5 +148,22 @@ const menu = [
     display(categoryfilters);
   }
 
+  function priceHtL(){
+
+    menu.sort(function(x,y){
+
+        return y.price - x.price;
+    })
+    display(menu);
+  }
+  function priceLtH(){
+
+    menu.sort(function(x,y){
+
+        return x.price - y.price;
+    })
+    display(menu);
+  }
+
 
   //A-Z & Z-A sorting in Menu

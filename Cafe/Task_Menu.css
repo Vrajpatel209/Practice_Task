@@ -180,7 +180,7 @@ Menu
   margin-bottom: 2rem;
 }
 .underline {
-  width: 5rem;
+  width: 15rem;
   height: 0.25rem;
   background: var(--clr-gold);
   margin-left: auto;
