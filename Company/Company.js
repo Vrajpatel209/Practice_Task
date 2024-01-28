@@ -1,6 +1,6 @@
 const products = [
     {
-        id: 1,
+        id: 'rec43w3ipXvP28vog',
         title: 'high-back bench',
         company: 'ikea',
         image:
@@ -8,7 +8,7 @@ const products = [
         price: 9.99,
     },
     {
-        id: 2,
+        id: 'rec4f2RIftFCb7aHh',
         title: 'albany table',
         company: 'marcos',
         image:
@@ -16,7 +16,7 @@ const products = [
         price: 79.99,
     },
     {
-        id: 3,
+        id: 'rec4f2RIftFCb7aHh',
         title: 'albany table',
         company: 'marcos',
         image:
@@ -24,7 +24,7 @@ const products = [
         price: 788.99,
     },
     {
-        id: 4,
+        id: 'rec4f2RIftFCb7aHh',
         title: 'albany table',
         company: 'marcos',
         image:
@@ -32,7 +32,7 @@ const products = [
         price: 1279.99,
     },
     {
-        id: 5,
+        id: 'rec8kkCmSiMkbkiko',
         title: 'accent chair',
         company: 'caressa',
         image:
@@ -40,7 +40,7 @@ const products = [
         price: 25.99,
     },
     {
-        id: 6,
+        id: 'recBohCqQsot4Q4II',
         title: 'wooden table',
         company: 'caressa',
         image:
@@ -48,7 +48,7 @@ const products = [
         price: 45.99,
     },
     {
-        id: 7,
+        id: 'recDG1JRZnbpRHpoy',
         title: 'dining table',
         company: 'caressa',
         image:
@@ -56,7 +56,7 @@ const products = [
         price: 6.99,
     },
     {
-        id: 8,
+        id: 'recNWGyP7kjFhSqw3',
         title: 'sofa set',
         company: 'liddy',
         image:
@@ -64,7 +64,7 @@ const products = [
         price: 69.99,
     },
     {
-        id: 9,
+        id: 'recZEougL5bbY4AEx',
         title: 'modern bookshelf',
         company: 'marcos',
         image:
@@ -72,7 +72,7 @@ const products = [
         price: 8.99,
     },
     {
-        id: 10,
+        id: 'recjMK1jgTb2ld7sv',
         title: 'emperor bed',
         company: 'liddy',
         image:
@@ -80,7 +80,7 @@ const products = [
         price: 21.99,
     },
     {
-        id: 11,
+        id: 'recmg2a1ctaEJNZhu',
         title: 'utopia sofa',
         company: 'marcos',
         image:
@@ -88,7 +88,7 @@ const products = [
         price: 39.95,
     },
     {
-        id: 12,
+        id: 'recvKMNR3YFw0bEt3',
         title: 'entertainment center',
         company: 'liddy',
         image:
@@ -96,7 +96,7 @@ const products = [
         price: 29.98,
     },
     {
-        id: 13,
+        id: 'recxaXFy5IW539sgM',
         title: 'albany sectional',
         company: 'ikea',
         image:
@@ -104,7 +104,7 @@ const products = [
         price: 10.99,
     },
     {
-        id: 14,
+        id: 'recyqtRglGNGtO4Q5',
         title: 'leather sofa',
         company: 'liddy',
         image:
@@ -132,11 +132,11 @@ function display(data) {
 }
 display(products);
 //------
-let mybutton = products.map(function (v, i) {
+let mybutton1 = products.map(function (v, i) {
     return `<button class="company-btn" onclick="filterByCompany(${v.company})">${v.company}</button>`;
 });
-console.log('first', mybutton);
-document.getElementById("companies").innerHTML = mybutton.join("");
+console.log('first', mybutton1);
+document.getElementById("companies").innerHTML = mybutton1.join("");
 //------
 function searchValue() {
     let searchTerm = document.getElementById("searchTerm").value.toLowerCase();
@@ -166,4 +166,17 @@ function priceLtH() {
     });
     display(products);
 }
+//------
+function sortdata(props, order) {
+    products.sort(function (m, n) {
+        if (order == 'DSC') {
+            return n[props] - m[props];
+        }
+        else {
+            return m[props] - n[props];
+        }
+    });
+    display(products);
+}
+
 //------
