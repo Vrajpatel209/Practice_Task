@@ -155,7 +155,7 @@ function priceLtH() {
 //------
 function sortdata(props, order) {
     products.sort(function (m, n) {
-        if (order == 'DSC') {
+        if (order == DSC) {
             return n[props] - m[props];
         }
         else {
