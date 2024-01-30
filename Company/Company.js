@@ -119,7 +119,7 @@ function display(data) {
 display(products);
 //------
 let mybutton = products.map(function (v) {
-    return `<button class="company-btn" onclick="filterByCompany(${v.company})">${v.company}</button>`;
+    return `<button class="company-btn" onclick="filterByCompany('${v.company}')">${v.company}</button>`;
 });
 console.log('first', mybutton);
 document.getElementById("companies").innerHTML = mybutton.join("");
