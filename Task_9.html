@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Display_Input_value</title>
+</head>
+
+<body>
+    <input type="text" id="inputValue"> <button onclick="AddValue()">Print</button> <button
+        onclick="RemoveValue()">Delete</button><br>
+    <label id="lbl"></label>
+    <script>
+        function AddValue() {
+            let NewValue = document.getElementById('inputValue').value;
+            document.getElementById('lbl').innerText += NewValue + '\n';
+        }
+    </script>
+</body>
+
+</html>
