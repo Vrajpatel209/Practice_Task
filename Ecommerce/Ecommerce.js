@@ -239,4 +239,38 @@ const products = [
           "count": 145
       }
   }
-]
+];
+
+function display(){
+
+    let htmls = products.map(function(value,index){
+    return `<div class='col-4'><div class="card" style="width: 18rem;">
+    <img src='${value.image}' class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">${value.title}</h5>
+      <p class="card-text">${value.description}</p>
+      <p class="card-text">${value.price}</p>
+      <a href="#" class="btn btn-primary"
+       onclick="addToCart(${index});">Add To Cart</a>
+    </div>
+  </div></div>`;
+});
+    document.getElementById("display").innerHTML = htmls.join(" ");
+}
+
+const cart = [];
+function addToCart(index){
+    let selectedProduct = products[index];
+
+    let checkItemExist = cart.find(function(v){
+        if(!checkItemExist){
+            return cart.push({item:selectedProduct,count:1});
+        }
+        else{
+            checkItemExist.count = checkItemExist.count+1;
+        }
+    });
+}
+console.log(cart);
+document.getElementById("navtext").innerHTML = cart.length;
+display();
