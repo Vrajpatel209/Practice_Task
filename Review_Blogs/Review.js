@@ -48,10 +48,18 @@ const reviews = [
 
   function next(){
     index = index + 1;
+
+    if(index >= reviews.length){
+      index = 0;
+    }
     display();
   }
 
   function previous(){
     index = index - 1;
+
+    if(index <= 0){
+      index = reviews.length - 1;
+    }
     display();
   }
