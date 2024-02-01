@@ -63,3 +63,8 @@ const reviews = [
     }
     display();
   }
+
+  function Surprisebtn(){
+    index = 0;
+    display();
+  }
