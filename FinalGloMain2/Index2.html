@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Grocery Bud</title>
+    <!-- font-awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+    />
+    <!-- styles -->
+    <link rel="stylesheet" href="Style2.css" />
+  </head>
+  <body>
+    <section class="section-center">
+      <!-- form -->
+      <form class="grocery-form">
+        <p class="alert"></p>
+        <h3>grocery bud</h3>
+        <div class="form-control">
+          <input type="text" id="grocery1" placeholder="FirstName" />
+          <input type="text" id="grocery2" placeholder="LastName" />
+          <input type="text" id="grocery3" placeholder="Contact No." />
+          <button type="button" class="submit-btn" onclick="addValues()">submit</button>
+        </div>
+      </form>
+      <!-- list -->
+      <div class="grocery-container">
+        <div class="grocery-list">
+            <div id="items"></div>
+            <!-- <button class="edit-btn">Edit</button>
+            <button class="delete-btn">Delete</button> -->
+        </div>
+        <button class="clear-btn" onclick="clearAllItems()">clear items</button>
+      </div>
+    </section>
+    <!-- javascript -->
+    <script src="Script2.js"></script>
+  </body>
+</html>
