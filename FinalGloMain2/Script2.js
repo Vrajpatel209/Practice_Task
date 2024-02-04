@@ -1,5 +1,5 @@
 let SearchValue = [];
-let myObject = { FName: newValues1, LName: newValues2, Num: newValues3 }
+let myObject = { FName: '', LName: '', Num: '' }
 let ind = -1;
 
 function display() {
@@ -18,10 +18,12 @@ function addValues() {
     const newValues3 = document.getElementById("grocery3").value;
     //SearchValue.push(newValues);
     if (ind < 0) {
-        SearchValue.push(myObject[newValues1, newValues2, newValues3]);
+        SearchValue.push(myObject[newValues1]);
+        SearchValue.push(myObject[newValues2]);
+        SearchValue.push(myObject[newValues3]);
     }
     else {
-        SearchValue[ind] = SearchValue.myObject[newValues1, newValues2, newValues3];
+        SearchValue[ind] = SearchValue.myObject;
     }
     ind = -1;
     display();
@@ -38,7 +40,9 @@ function clearAllItems() {
 }
 
 function editItem(index) {
-    document.getElementById("grocery").value = SearchValue[index];
+    document.getElementById("grocery1").value = SearchValue.myObject[index];
+    document.getElementById("grocery2").value = SearchValue.myObject[index];
+    document.getElementById("grocery3").value = SearchValue.myObject[index];
     ind = index;
 }
 //HomeWork:
