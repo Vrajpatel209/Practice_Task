@@ -13,13 +13,10 @@ function addValues() {
 }
 function display() {
     let d = Details.map(function (value, index) {
-        return `<div class="grocery-list">
-        ${value.FirstName} ${value.LastName} : ${value.ContactNo}
-        <button class="edit-btn" onclick="editItem(${index})">Edit</button>
-        <button class="delete-btn" onclick="removeItem(${index})">Delete</button>
-    </div>`;
+
+        return `<tr><td>${value.FirstName}</td><td>${value.LastName}</td><td> : </td><td>${value.ContactNo}</td></tr>`;
     });
-    document.getElementById("items").innerHTML = d.join(" ");
+    document.getElementById("tabledata").innerHTML = d.join(" ");
 }
 
 function removeItem(index) {
