@@ -112,6 +112,7 @@ function display(data) {
           <h5 class="product-name">${v.title}</h5>
           <span class="product-price">${v.price}</span>
         </footer>
+        <button type="button" class="filter-btn" data-id="all" onclick="AddToCart(${i})">Add To Cart</button>
       </article>`;
     });
     document.getElementById("products").innerHTML = newarray.join("");
@@ -175,3 +176,21 @@ function sortdata(props, order) {
 }
 
 //------
+const Cart = [];
+
+function AddToCart(index) {
+    const selectedItems = products[index];
+
+    let ItemsExists = Cart.find(function (v) {
+        return v.item.id = selectedItems.id;
+    });
+
+    if (!ItemsExists) {
+        Cart.push({ item: selectedItems, count: 1 });
+    }
+    else {
+        ItemsExists.count = ItemsExists.count + 1;
+    }
+    console.log(Cart);
+    document.getElementById("count").innerHTML = Cart.length;
+}
