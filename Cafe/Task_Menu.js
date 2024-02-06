@@ -103,10 +103,18 @@ function display(mydata) {
 }
 display(menu);
 
+let categories = menu.reduce(function (pre, v) {
+    if (pre.includes(v.category) == false) {
+        pre.push(v.category);
+    }
+    return pre;
+}, []);
+categories.push("All");
+console.log(categories);
 //------
-let mybutton = menu.map(function (v, i) {
+let mybutton = categories.map(function (v, i) {
 
-    return `<button type="button" class="filter-btn" data-id="all" onclick="filterByCategory('${v.category}')">${v.category}</button>`
+    return `<button type="button" class="filter-btn" data-id="all" onclick="filterByCategory('${v}')">${v}</button>`
 });
 console.log('first', mybutton);
 document.getElementById("btn").innerHTML = mybutton.join("");
@@ -124,7 +132,7 @@ function searchValue() {
 //------
 function filterByCategory(category) {
     let categoryfilters = menu.filter(function (v) {
-        return v.category == category;
+        return v.category == category || category == "All";
     });
     display(categoryfilters);
 }
@@ -180,22 +188,22 @@ function ascendTitle() {
 //------
 const cartItems = [];
 
-function addToCart(index){
+function addToCart(index) {
 
-const selectedProducts = menu[index];
+    const selectedProducts = menu[index];
 
 
-let productExist = cartItems.find(function(v){
-    return v.item.id == selectedProducts.id;
-});
+    let productExist = cartItems.find(function (v) {
+        return v.item.id == selectedProducts.id;
+    });
 
-if(!productExist){
-    cartItems.push({item:selectedProducts,count:1});
-}
-else{
-    productExist.count = productExist.count+1;
-}
+    if (!productExist) {
+        cartItems.push({ item: selectedProducts, count: 1 });
+    }
+    else {
+        productExist.count = productExist.count + 1;
+    }
 
-console.log(cartItems);
-document.getElementById("count").innerHTML = cartItems.length;
+    console.log(cartItems);
+    document.getElementById("count").innerHTML = cartItems.length;
 }
