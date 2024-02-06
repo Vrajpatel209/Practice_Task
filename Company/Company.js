@@ -117,9 +117,18 @@ function display(data) {
     document.getElementById("products").innerHTML = newarray.join("");
 }
 display(products);
+
+let companies = products.reduce(function (pre, v) {
+    if (pre.includes(v.company) == false) {
+        pre.push(v.company);
+    }
+    return pre;
+}, []);
+
+companies.push("All");
 //------
-let mybutton = products.map(function (v) {
-    return `<button class="company-btn" onclick="filterByCompany('${v.company}')">${v.company}</button>`;
+let mybutton = companies.map(function (v) {
+    return `<button class="company-btn" onclick="filterByCompany('${v}')">${v}</button>`;
 });
 console.log('first', mybutton);
 document.getElementById("companies").innerHTML = mybutton.join("");
@@ -135,7 +144,7 @@ function searchValue() {
 //------
 function filterByCompany(company) {
     let companyfilter = products.filter(function (v) {
-        return v.company == company;
+        return v.company == company || company == "All";
     });
     display(companyfilter);
 }
