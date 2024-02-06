@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Map</title>
+</head>
+
+<body>
+    <script>
+        let mapArray = new Map();
+        let sentence = "this is the javascript. this is the";
+        let word = sentence.split(" ");
+        console.log(word);
+
+        for (let i = 0; i < word.length; i++){
+            
+            if(mapArray.has(word[i]) == false){
+                mapArray.set(word[i],1);
+            }
+            else{
+                let c = mapArray.get(word[i]);
+                c=c+1;
+
+                mapArray.set(word[i],c);
+            }
+        }
+        console.log(mapArray);
+    </script>
+</body>
+
+</html>
