@@ -1,20 +1,29 @@
 let Details = [];
+let ind = -1;
 
 function addValues() {
     const info = {
-        FirstName : document.getElementById("FName").value,
-        LastName : document.getElementById("LName").value,
-        ContactNo : document.getElementById("Number").value,
+        FirstName: document.getElementById("FName").value,
+        LastName: document.getElementById("LName").value,
+        ContactNo: document.getElementById("Number").value,
     }
+    if (ind < 0) {
+        Details.push(info);
+    }
+    else {
+        Details[ind] = info;
+    }
+    ind = -1;
 
-    Details.push(info);
+    //Details.push(info);
 
     display();
 }
 function display() {
     let d = Details.map(function (value, index) {
 
-        return `<tr><td>${value.FirstName}</td><td>${value.LastName}</td><td> : </td><td>${value.ContactNo}</td></tr>`;
+        return `<tr><td>${value.FirstName}</td><td>${value.LastName}</td><td> : </td><td>${value.ContactNo}</td><td><button class="edit-btn" onclick="editItem(${index})">Edit</button></td>
+        <td><button class="delete-btn" onclick="removeItem(${index})">Delete</button></td></tr>`;
     });
     document.getElementById("tabledata").innerHTML = d.join(" ");
 }
