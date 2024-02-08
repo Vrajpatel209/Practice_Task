@@ -241,6 +241,8 @@ const products = [
     }
 ];
 
+const cart = [];
+
 function display() {
 
     let htmls = products.map(function (value, index) {
@@ -258,7 +260,6 @@ function display() {
     document.getElementById("display").innerHTML = htmls.join(" ");
 }
 
-const cart = [];
 
 function addToCart(index) {
     let selectedProduct = products[index];
@@ -268,12 +269,14 @@ function addToCart(index) {
         return v.item.id == selectedProduct.id;
     });
     if (!checkItemExist) {
-        return cart.push({ item: selectedProduct, count: 1 });
+        cart.push({ item: selectedProduct, count: 1 });
     }
     else {
         checkItemExist.count = checkItemExist.count + 1;
     }
+
+    console.log(cart);
+    document.getElementById("navtext").innerHTML = cart.length;
 }
-console.log(cart);
-document.getElementById("navtext").innerHTML = cart.length;
+
 display();
