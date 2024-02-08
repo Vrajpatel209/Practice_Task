@@ -37,7 +37,16 @@ function clearAllItems() {
     Details.splice(0);
     display();
 }
+
+function editItem(index){
+    document.getElementById("FName").value = Details[index];
+    ind = index;
+    document.getElementById("LName").value = Details[index];
+    ind = index;
+    document.getElementById("Number").value = Details[index];
+    ind = index;
+}
 //HomeWork:
-// create 3text-box(FirstName,LastName,PhoneNo.) with single array i.e. ArrayOfObject.
+//create 3text-box(FirstName,LastName,PhoneNo.) with single array i.e. ArrayOfObject.
 //ARRAY - LeetCode
 //2,3,4,5,6 : {2,3}{2,4}{2,5}....
