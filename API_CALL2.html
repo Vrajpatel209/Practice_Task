@@ -20,13 +20,13 @@
         function display(myData) {
             let v = myData.map(function (value) {
                 return `<div class='col-4'><div class="card" style="width: 18rem;">
-    <img src='${value.image}' class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">${value.title}</h5>
-      <p class="card-text">${value.description}</p>
-      <p class="card-text">$${value.price}</p>
-    </div>
-  </div></div>`;
+                        <img src='${value.image}' class="card-img-top" alt="...">
+                        <div class="card-body">
+                        <h5 class="card-title">${value.title}</h5>
+                        <p class="card-text">${value.description}</p>
+                        <p class="card-text">$${value.price}</p>
+                        </div>
+                        </div></div>`;
             });
             document.getElementById("display").innerHTML = v.join("<br>");
         }
