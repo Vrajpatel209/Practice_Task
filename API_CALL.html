@@ -8,12 +8,22 @@
 <body>
     <table id="display"></table>
     <div id="displaybtn"></div>
+    <select id="PageSize" onchange="managePageSize(1)">
+        <option>5</option>
+        <option>10</option>
+        <option>15</option>
+        <option>20</option>
+    </select>
     <script>
+
+        let myData = [];
+        
         fetch("https://jsonplaceholder.typicode.com/comments").then(function (value) {
             return value.json();
         }).then(function (value) {
-            display(value);
-            displayButton(value.length/50);
+            myData = value;
+            pagination(1);
+            displayButton(value.length/document.getElementById("PageSize").value);
         });
 
         function display(myData) {
@@ -24,9 +34,24 @@
         }
 
         function displayButton(size) {
+            document.getElementById("displaybtn").innerHTML = "";
             for (let i = 1; i <= size; i++) {
-                document.getElementById("displaybtn").innerHTML += `<button>${i}</button>`;
+                document.getElementById("displaybtn").innerHTML += `<button onclick="pagination(${i})">${i}</button>`;
             }
+        }
+
+        function managePageSize(){
+            pagination(1);
+            displayButton(myData.length/document.getElementById("PageSize").value);
+        }
+    
+        function pagination(pageNumber){
+            let start = (pageNumber-1)*parseInt(document.getElementById("PageSize").value);
+            let end = (start)+parseInt(document.getElementById("PageSize").value);
+            let j = myData.slice(start,end);
+            console.log(j);
+            display(j);
+    
         }
     </script>
 </body>
