@@ -10,12 +10,20 @@
 <body>
     <div id="display"></div>
     <div id="displaybtn"></div>
+    <select id="PageSize" onchange="managePageSize(1)">
+        <option>5</option>
+        <option>10</option>
+    </select>
     <script>
+
+        let myProducts = [];
+
         fetch("https://fakestoreapi.com/products").then(function (value) {
             return value.json();
         }).then(function (value) {
+            myProducts = value;
             display(value);
-            displayButton(value.length/2);
+            displayButton(value.length/document.getElementById("PageSize").value);
         });
 
         function display(myData) {
@@ -33,10 +41,25 @@
         }
 
         function displayButton(size){
+            document.getElementById("displaybtn").innerHTML = "";
             for(let i=1; i<=size; i++){
-                document.getElementById("displaybtn").innerHTML += `<button>${i}</button>`;
+                document.getElementById("displaybtn").innerHTML += `<button onclick="pagination(${i})">${i}</button>`;
             }
         }
+
+        function pagination(pageNumber){
+            let start = (pageNumber-1)*parseInt(document.getElementById("PageSize").value);
+            let end = start + parseInt(document.getElementById("PageSize").value);
+            let k = myProducts.slice(start,end);
+            console.log(k);
+            display(k);
+        }
+
+        function managePageSize(){
+            pagination(1);
+            displayButton(myProducts.length/document.getElementById("PageSize").value);
+        }
+
     </script>
 </body>
 
