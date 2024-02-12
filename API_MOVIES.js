@@ -505,3 +505,8 @@ const myApiData = [
 </div>`
 
 document.getElementById("display").innerHTML = display;
+
+/*
+HOMEWORK : 
+call api and display value that has id < 15;
+*/
