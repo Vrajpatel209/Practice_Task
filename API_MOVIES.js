@@ -470,41 +470,45 @@ const myApiData = [
     }
   ];
 
-  const display = 
-  `<div id="demo" class="carousel slide" data-bs-ride="carousel">
+const newArray = myApiData.map(function(value,index){
+
+  const display = `<div id="demo${index}" class="carousel slide" data-bs-ride="carousel">
   <!-- Indicators/dots -->
   <div class="carousel-indicators">
-    <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
-    <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
-    <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+    <button type="button" data-bs-target="#demo${index}" data-bs-slide-to="0" class="active"></button>
+    <button type="button" data-bs-target="#demo${index}" data-bs-slide-to="1"></button>
+    <button type="button" data-bs-target="#demo${index}" data-bs-slide-to="2"></button>
   </div>
   
   <!-- The slideshow/carousel -->
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="${myApiData[0].Images[0]}" alt="Los Angeles" class="d-block" style="width:100%">
+      <img src="${value.Images[0]}" alt="Los Angeles" class="d-block" style="width:100%">
     </div>
     <div class="carousel-item">
-      <img src="${myApiData[0].Images[1]}" alt="Chicago" class="d-block" style="width:100%">
+      <img src="${value.Images[1]}" alt="Chicago" class="d-block" style="width:100%">
     </div>
     <div class="carousel-item">
-      <img src="${myApiData[0].Images[2]}" alt="New York" class="d-block" style="width:100%">
+      <img src="${value.Images[2]}" alt="New York" class="d-block" style="width:100%">
     </div>
   </div>
   
   <!-- Left and right controls/icons -->
-  <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+  <button class="carousel-control-prev" type="button" data-bs-target="#demo${index}" data-bs-slide="prev">
     <span class="carousel-control-prev-icon"></span>
   </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+  <button class="carousel-control-next" type="button" data-bs-target="#demo${index}" data-bs-slide="next">
     <span class="carousel-control-next-icon"></span>
   </button>
 </div></div><div> 
-<p>Cast: ${myApiData[0].Actors}</p>
-<p>Title: ${myApiData[0].Title}</p>
-</div>`
+<p>Cast: ${value.Actors}</p>
+<p>Title: ${value.Title}</p>
+</div>`;
+return display;
 
-document.getElementById("display").innerHTML = display;
+});
+document.getElementById("display").innerHTML = newArray.join("");
+
 
 /*
 HOMEWORK : 
