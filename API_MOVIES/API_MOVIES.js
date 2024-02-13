@@ -472,25 +472,27 @@ const myApiData = [
 
 const newArray = myApiData.map(function(value,index){
 
+  const indicators = value.Images.map(function(vIndicator,iIndicator){
+    return `<button type="button" data-bs-target="#demo${iIndicator}" data-bs-slide-to="${iIndicator}" class="active"></button>`;
+  });
+
+  const image = value.Images.map(function(vImage,iImage){
+    return `<div class="carousel-item ${iImage == 0? "active" : ""}">
+    <img src="${vImage}" alt="Los Angeles" class="d-block" style="width:100%">
+  </div>`;
+  });
+
+
+
   const display = `<div id="demo${index}" class="carousel slide" data-bs-ride="carousel">
   <!-- Indicators/dots -->
   <div class="carousel-indicators">
-    <button type="button" data-bs-target="#demo${index}" data-bs-slide-to="0" class="active"></button>
-    <button type="button" data-bs-target="#demo${index}" data-bs-slide-to="1"></button>
-    <button type="button" data-bs-target="#demo${index}" data-bs-slide-to="2"></button>
+    ${indicators.join("")};
   </div>
   
   <!-- The slideshow/carousel -->
   <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="${value.Images[0]}" alt="Los Angeles" class="d-block" style="width:100%">
-    </div>
-    <div class="carousel-item">
-      <img src="${value.Images[1]}" alt="Chicago" class="d-block" style="width:100%">
-    </div>
-    <div class="carousel-item">
-      <img src="${value.Images[2]}" alt="New York" class="d-block" style="width:100%">
-    </div>
+    ${image.join("")};
   </div>
   
   <!-- Left and right controls/icons -->
