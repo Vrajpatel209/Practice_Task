@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Document</title>
+</head>
+
+<body>
+    <table id="display">
+
+    </table>
+    <script>
+        mydata = [];
+        fetch("https://jsonplaceholder.typicode.com/users").then(function (value) {
+            return value.json();
+        }).then(function (value) {
+            display(value);
+        });
+
+        function display(mydata) {
+            let p = mydata.map(function (value) {
+                return `<tr><td>ID:- ${value.id}</td><td></td><td>NAME:-<br>${value.name}</td><td></td><td>USERNAME:-<br>${value.username}</td><td></td><td>EMAIL:-<br>${value.email}</td><td></td><td>ADDERSS:-<br>Street: ${value.address.street}<br>Suite: ${value.address.suite}<br>City: ${value.address.city}<br>Zip: ${value.address.zipcode}</td><td>GEO:-<br>LAT:<br>${value.address.geo.lat}<br>LNG:<br>${value.address.geo.lng}</td><td></td><td>PHONE:- <br>${value.phone}</td><td></td><td>WEBSITE:-<br>${value.website}</td><td>COMPANY:-<br>Name: ${value.company.name}<br>CatchPhrase: ${value.company.catchPhrase}<br>BS: ${value.company.bs}</td></td></tr>`;
+            });
+            document.getElementById("display").innerHTML = p.join(" ");
+        }
+    </script>
+</body>
+
+</html>
