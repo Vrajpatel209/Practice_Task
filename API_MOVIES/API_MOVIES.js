@@ -513,6 +513,6 @@ document.getElementById("display").innerHTML = newArray.join("");
 
 
 /*
-HOMEWORK : 
-call api and display value that has id < 15;
+HOMEWORK : pending of 13-02-24
+
 */
