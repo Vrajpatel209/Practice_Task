@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JOB_PORTAL</title>
+</head>
+<body>
+    <form onsubmit="handleSubmit(event)">
+        <label>Name: </label>
+        <input type="text" name="name" id="name">
+
+        <label>Title: </label>
+        <input type="text" name="title" id="title">
+        
+        <label>Skills: </label>
+        <input type="text" name="skills" id="skills">
+
+        <button name="Save">Save</button>
+    </form>
+    <script>
+        const handleSubmit = (e) =>{
+            e.preventDefault();
+
+            let obj = {};
+            document.querySelectorAll("input").forEach((element)=>{
+                obj[element.name] = element.value;
+            });
+            //console.log(obj);
+            
+            obj.createdAt = "2024-02-20T07:03:59.545Z";
+
+            fetch("https://65d571c63f1ab8c63436f7f4.mockapi.io/v1/CreateJob",{
+                method: "POST",
+                headers: {
+                    'Content-Type': "application/json"
+                },
+                body: JSON.stringify(obj),
+            }).then(j=>{
+                return j.json();
+            }).then(j=>{
+                console.log(j);
+            });
+            console.log(obj);
+        }
+
+    </script>
+</body>
+</html>
