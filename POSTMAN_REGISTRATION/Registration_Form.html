@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Recruiter_Registration_Form</title>
+</head>
+<body>
+    <form onsubmit="handleSubmit(event)">
+        <label>Email: </label>
+        <input type="text" name="email" id="email">
+
+        <label>Password: </label>
+        <input type="password" name="password" id="password">
+
+        <label>Name: </label>
+        <input type="text" name="name" id="name">
+
+        <label>Bio: </label>
+        <input type="text" name="bio" id="bio">
+        
+        <label>Contact: </label>
+        <input type="text" name="contact" id="contact">
+
+        <button name="Save">Save</button>
+    </form>
+    <script>
+        const handleSubmit = (e)=>{
+            e.preventDefault();
+
+            let obj = {};
+            document.querySelectorAll("input").forEach((element)=>{
+                obj[element.name] = element.value;
+            });
+            console.log(obj);
+        }
+    </script>
+</body>
+</html>
