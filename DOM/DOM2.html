@@ -6,9 +6,20 @@
 </head>
 
 <body>
+    <div id="BasicInfo">
+        <label>First Name</label>
+        <input type="text" name="firstName"/>
+        
+        <label>Last Name</label>
+        <input type="text" name="lastName"/>
+        
+        <label>Email</label>
+        <input type="text" name="email"/>
+    </div><br>
+    
     <button onclick="addMoreEdu()">Add More Education</button><br><br>
     <div id="Education">
-        <div id="eduNum">
+        <div id="eduInfo">
             <label>Education Level</label>
             <input type="text" name="educationlevel">
 
@@ -16,10 +27,11 @@
             <input type="text" name="educationstart">
         </div>
     </div>
+    <br><button onclick="saveInfo()">SAVE ALL</button>
 
     <script>
         const addMoreEdu = () => {
-            let edu = document.getElementById("eduNum").cloneNode(true);
+            let edu = document.getElementById("eduInfo").cloneNode(true);
 
             let a = edu.getElementsByTagName("input");
 
@@ -40,7 +52,34 @@
             const removeElement = (a) => {
                 a.target.parentElement.remove();
             }
-        } 
+        }
+
+        const saveInfo = () =>{
+            let opt = {};
+            let b = document.querySelectorAll("#BasicInfo input");
+            let b1 = document.querySelectorAll("#Education #eduInfo");
+
+            opt["eduInfo"] = [];
+            b1.forEach((value,index)=>{
+                let elements = value.querySelectorAll("input");
+                let myJSON = convertToJson(elements);
+
+                opt["eduInfo"].push(myJSON);
+            });
+            console.log(b1);
+
+            opt["BasicInfo"] = convertToJson(b);
+
+            console.log(opt);
+        }
+
+        const convertToJson = (c) => {
+            let obj = {};
+            c.forEach((input,index)=>{
+                obj[input.name] = input.value;
+            })
+            return obj;
+        }
 
     </script>
 </body>
