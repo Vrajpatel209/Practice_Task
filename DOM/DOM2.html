@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>DOM2</title>
+</head>
+
+<body>
+    <button onclick="addMoreEdu()">Add More Education</button><br><br>
+    <div id="Education">
+        <div id="eduNum">
+            <label>Education Level</label>
+            <input type="text" name="educationlevel">
+
+            <label>Education Start</label>
+            <input type="text" name="educationstart">
+        </div>
+    </div>
+
+    <script>
+        const addMoreEdu = () => {
+            let edu = document.getElementById("eduNum").cloneNode(true);
+
+            let a = edu.getElementsByTagName("input");
+
+            let a1 = document.createElement("button");
+
+            a1.innerHTML = "REMOVE";
+
+            a1.onclick = (b) => {
+                removeElement(b);
+            };
+
+            for(let index = 0 ; index < a.length; index++){
+                a[index].value = "";
+            }
+            edu.appendChild(a1);
+            document.getElementById("Education").appendChild(edu);
+
+            const removeElement = (a) => {
+                a.target.parentElement.remove();
+            }
+        } 
+
+    </script>
+</body>
+
+</html>
