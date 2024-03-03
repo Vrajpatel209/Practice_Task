@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Applicant_Portal</title>
+    <link rel="stylesheet" href="Project1.css">
+</head>
+<body>
+    <div id="MainSection">
+        <h1>APPLICANT SIGN-IN</h1><br><br>
+        
+        <label>Name</label><br>
+        <input type="text" id="nep"><br><br>
+
+        <label>Email</label><br>
+        <input type="email" id="nep"><br><br>
+
+        <label>Password</label><br>
+        <input type="password" id="nep"><br><br>
+
+        <div id="eduInfo">
+            <input type="text" name="educationlevel" placeholder="Institution Name #1" id="edu">
+            <input type="number" name="educationStart" placeholder="Start Year" id="edu">
+            <input type="number" name="educationEnd" placeholder="End Year" id="edu">
+        </div><br>
+        <button onclick="addMoreEdu()">ADD ANOTHER INSTITUTION DETAILS</button><br><br>
+
+        <input type="text" placeholder="Skills" id="nep">
+        <p>Press Enter to Add Skills</p><br><br>
+    </div>
+
+    <script>
+        const addMoreEdu = () => {
+            let edu = document.getElementById("eduInfo").cloneNode(true);
+
+            let a = edu.getElementsByTagName("input");
+
+            let a1 = document.createElement("button");
+
+            a1.innerHTML = "REMOVE";
+
+            a1.onclick = (b) => {
+                removeElement(b);
+            };
+
+            for(let index = 0 ; index < a.length; index++){
+                a[index].value = "";
+            }
+            edu.appendChild(a1);
+            document.getElementById("MainSection").appendChild(edu);
+
+            const removeElement = (a) => {
+                a.target.parentElement.remove();
+            }
+        }
+    </script>
+</body>
+</html>
