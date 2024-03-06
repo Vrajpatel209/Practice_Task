@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>LOGIN_COOKIES</title>
+</head>
+<body>
+    <form action="WELCOME.html">
+    <label>USERNAME </label>
+    <input type="text" id="usnm">
+    <br><br>
+    <label>PASSWORD </label>
+    <input type="password" id="pswd">
+    <br><br>
+    <button onclick="displayCookie()">SUBMIT</button>
+</form>
+    <script>
+        
+        function displayCookie(){
+            document.cookie = document.getElementById("usnm").value;
+        }
+        let c = document.cookie;
+        console.log(c);
+
+    </script>
+</body>
+</html>
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form>
+      <label>Username</label>
+      <input id="username" type="text" />
+      <label>Password</label>
+      <input id="password" type="password" />
+      <button onclick="getCookies()">Submit</button>
+    </form>
+    <script>
+        let p=document.cookie;
+        function getCookies(){
+        
+      document.cookie=document.getElementById("username").value;
+      
+      
+        }
+        console.log(p);
+
+    
+    </script>
+ </body>
+ </html> -->
