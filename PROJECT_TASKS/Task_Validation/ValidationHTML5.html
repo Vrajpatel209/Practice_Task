@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HTML5_VALIDATION</title>
+</head>
+<body>
+    <!-- <form name="Registration"> -->
+        <label>Name: </label>
+        <input type="text" placeholder="Your Full Name" id="name" pattern="[a-zA-Z]{2,30}"><br>
+        <p id="ErrorName"></p>
+        <br><br>
+
+        <label>Email: </label>
+        <input type="email" placeholder="Your E-mail" id="email"><br>
+        <p id="ErrorEmail"></p>
+        <br><br>
+
+        <label>Password: </label>
+        <input type="password" placeholder="Create Password" id="password" pattern="(?=.\d)(?=.[a-z])(?=.*[A-Z]).{8,}">
+        <input type="password" placeholder="confirm Password" id="confirmPassword" pattern="(?=.\d)(?=.[a-z])(?=.*[A-Z]).{8,}"><br>
+        <p id="ErrorPassword"></p> <p id="ErrorCPassword"></p>
+        <br><br>
+
+        <label>Contact: </label>
+        <input type="number" placeholder="Your PhoneNumber" id="phone" minlength="10" maxlength="10">
+        <p id="ErrorPhone"></p>
+        <br>
+        <button onclick="myValidation()">SAVE</button>
+    <!-- </form> -->
+
+    <script>
+
+        function myValidation(){
+            const inputName = document.getElementById("name");
+            const inputEmail = document.getElementById("email");
+            const inputPass = document.getElementById("password");
+            const inputCPas = document.getElementById("confirmPassword");
+            const inputCont = document.getElementById("phone");
+
+            let text = [];
+            if(inputName.validity.typeMismatch){  //patternMismatch
+                text.push("Pattern not matched, Please check the NAME you entered.");
+                document.getElementById("ErrorName").innerHTML = text[0];
+            }
+            if(inputEmail.validity.typeMismatch){
+                text.push("Invalid EMAIL");
+                document.getElementById("ErrorEmail").innerHTML = text[1];
+            }
+            if(inputPass.validity.typeMismatch){  //patternMismatch
+                text.push("Create a valid PASSWORD");
+                document.getElementById("ErrorPassword").innerHTML = text[2];
+            }
+            if(inputCPas.validity.typeMismatch){ //patternMismatch
+                text.push("Enter exactly the same as PASSWORD");
+                document.getElementById("ErrorCPassword").innerHTML = text[3];
+            }
+            if(inputCont.validity.patternMismatch){
+                text.push("Enter 10 digits NUMBER only");
+                document.getElementById("ErrorPhone").innerHTML = text[4];
+            }
+            else{
+                text.push("Validation Complete");
+                document.getElementById("ErrorName").innerHTML = text[0];
+                document.getElementById("ErrorEmail").innerHTML = text[0];
+                document.getElementById("ErrorPassword").innerHTML = text[0];
+                document.getElementById("ErrorCPassword").innerHTML = text[0];
+                document.getElementById("ErrorPhone").innerHTML = text[0];
+            }
+            
+            // switch (inputName){
+            //     case (validity.patternMismatch):
+            //     text.push("Pattern not matched, Please check the NAME you entered.");
+            //     document.getElementById("ErrorName").innerHTML = text[0];
+            //     break;
+            // }
+        }
+
+    </script>
+</body>
+</html>
