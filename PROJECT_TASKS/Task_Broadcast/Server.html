@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SERVER</title>
+</head>
+<body>
+    <input type="text" id="inputS">
+    <button id="btn" onclick="sendToClient()">SEND</button><br><br>
+    <div id="DisplayS"></div>
+    <script>
+        const exportTxt = new BroadcastChannel("vraj");
+        exportTxt.onmessage = (a) => {
+            console.log(a);
+            document.getElementById("DisplayS").innerHTML = a.data;
+        }
+        const sendToClient = () => {
+            let msg = document.getElementById("inputS").value;
+            exportTxt.postMessage(msg);
+        }
+    </script>
+</body>
+</html>
