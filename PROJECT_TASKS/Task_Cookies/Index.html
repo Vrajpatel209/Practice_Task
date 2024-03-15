@@ -16,8 +16,10 @@
     <script>
         
         function displayCookie(){
-            document.cookie = document.getElementById("usnm").value;
+            let user =  document.getElementById("usnm").value;
+            document.cookie =   `user= ${user}`;
         }
+         
         let c = document.cookie;
         console.log(c);
 

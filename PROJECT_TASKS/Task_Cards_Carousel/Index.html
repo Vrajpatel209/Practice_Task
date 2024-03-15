@@ -31,27 +31,27 @@
                   fetch(url).then(y => y.json())
                       .then(y => {
 
-                          dis(y);
-                          console.log(y);
+                          dis(y.products);
+                          console.log(y.products);
                       })
 
               }
 
-              const displayCards = (data) => {
+              // const displayCards = (data) => {
 
-                  let p = data.map((value) => {
+              //     let p = data.map((value) => {
 
-                      return `<div class='col-4'><div class="card" style="width: 18rem;">
-                      <img src='${value.image}' class="card-img-top" alt="...">
-                      <div class="card-body">
-                      <h5 class="card-title">${value.title}</h5>
-                      <p class="card-text">${value.description}</p>
-                      <p class="card-text">$${value.price}</p>
-                      </div>`;
-                      })
+              //         return `<div class='col-4'><div class="card" style="width: 18rem;">
+              //         <img src='${value.image}' class="card-img-top" alt="...">
+              //         <div class="card-body">
+              //         <h5 class="card-title">${value.title}</h5>
+              //         <p class="card-text">${value.description}</p>
+              //         <p class="card-text">$${value.price}</p>
+              //         </div>`;
+              //         })
 
-                    document.getElementById("Cards").innerHTML = p.join(" ");
-                     }
+              //       document.getElementById("Cards").innerHTML = p.join(" ");
+              //        }
               
               const displayCarousel = (data) => {
 
@@ -97,8 +97,8 @@
                 }
                   
 
-              fetchData("https://fakestoreapi.com/products", displayCards)
-              fetchData("https://api.escuelajs.co/api/v1/products", displayCarousel)
+              //fetchData("https://fakestoreapi.com/products", displayCards)
+              fetchData("https://dummyjson.com/products", displayCarousel)
     </script>
   </body>
 </html>
