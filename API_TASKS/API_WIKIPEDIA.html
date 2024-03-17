@@ -104,14 +104,14 @@
         </div>
     </div>
     <script>
-        function searchItems(){
-        let item = document.getElementById("search").value;
-        fetch("https://en.wikipedia.org/w/api.php?action=query&list=search&srlimit=20&format=json&origin=*&srsearch=" + item).then(function (value) {
-            return value.json();
-        }).then(function (value) {
-            displayItems(value);
-        });
-    }
+        function searchItems() {
+            let item = document.getElementById("search").value;
+            fetch("https://en.wikipedia.org/w/api.php?action=query&list=search&srlimit=20&format=json&origin=*&srsearch=" + item).then(function (value) {
+                return value.json();
+            }).then(function (value) {
+                displayItems(value);
+            });
+        }
 
         function displayItems(myData) {
             let val = myData.query.search.map(function (value) {
