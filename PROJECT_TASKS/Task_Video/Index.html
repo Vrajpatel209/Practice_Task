@@ -4,10 +4,22 @@
     <title>VIDEO_FUNCTION</title>
 </head>
 <body>
-    <video id="myVideo" controls src="https://www.w3schools.com/tags/mov_bbb.mp4"></video>
+    <video height="700px" width="100%" id="myVideo" controls src="RAM_MANDIR.mp4" onpause="myPause(event)"></video>
  
     <script>
         
+        setVideoData();
+
+        function myPause(event){
+            console.log(event);
+            localStorage.setItem("myTime",event.target.currentTime);
+        }
+
+        function setVideoData(){
+            let time = localStorage.getItem("myTime");
+            document.querySelector("#myVideo").currentTime = time;
+        }
+
     </script>
 </body>
 </html>

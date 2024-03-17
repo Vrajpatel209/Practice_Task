@@ -10,19 +10,23 @@
     <form name="Registration" onsubmit="validate(event)">
         <label>First Name</label>
         <input type="text" id="firstName">
-        <!-- <span>Please enter First Name</span> -->
+        <span></span><br><br>
 
         <label>Last Name</label>
         <input type="text" id="lastName">
+        <span></span><br><br>
 
         <label>Email</label>
         <input type="email" id="email">
+        <span></span><br><br>
 
         <label>Password</label>
         <input type="password" id="password">
+        <span></span><br><br>
 
         <label>Confirm Password</label>
         <input type="password" id="confirmPassword">
+        <span></span><br><br>
 
         <button type="submit" value="save">SAVE</button>
     </form>
@@ -31,9 +35,67 @@
         const validate = (e)=>{
             e.preventDefault();
             
-            var elements = document.forms["Registration"].innerHTML;
+            var elements = document.forms["Registration"];
 
-            console.log(elements);
+            for(i=0;i<elements.length;i++){
+                let msg = validateInput(elements[i].id, elements[i].value);
+                if(msg){
+                    elements[i].nextElementSibling.textContent = msg;
+                }
+            }
+        }
+
+        const validateInput = (name,value) => {
+            //alert(/[a-zA-Z]/.test(value));
+            let errorMsg = "";
+            
+            switch(name){
+                case "firstName":
+                    if(!value){
+                        errorMsg = "Please enter firstname."
+                    }
+                    else if(/[a-zA-Z]/.test(value) == false){
+                        errorMsg = "Please enter valid firstname."
+                    }
+                    break;
+
+                    case "lastName":
+                    if(!value){
+                        errorMsg = "Please enter lastname."
+                    }
+                    else if(/[a-zA-Z]/.test(value) == false){
+                        errorMsg = "Please enter valid lastname."
+                    }
+                    break;
+
+                    case "email":
+                    if(!value){
+                        errorMsg = "Please enter Email."
+                    }
+                    else if(value){
+                        errorMsg = "Please enter valid Email."
+                    }
+                    break;
+
+                    case "password":
+                    if(!value){
+                        errorMsg = "Please enter password."
+                    }
+                    else if(value){
+                        errorMsg = "Please enter valid password."
+                    }
+                    break;
+
+                    case "confirmPassword":
+                    if(!value){
+                        errorMsg = "Please enter password again."
+                    }
+                    else if(value){
+                        errorMsg = "Both passwords does not match."
+                    }
+                    break;
+            }
+            return errorMsg;
         }
     </script>
 
