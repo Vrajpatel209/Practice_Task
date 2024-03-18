@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>API_CALL</title>
+</head>
+<body>
+    <input type="text" id="inputData"><button onclick="searchData()">SEARCH</button><br><br>
+    <table border="2" id="Display"></table>
+
+    <script>
+    fetch("https://api.storerestapi.com/products").then(function(value){
+        return value.json();
+    }).then(function(value){
+        console.log(value.data);
+        myArray = value.data;
+        displayProduct(myArray);
+    })
+    
+    myArray = [" "];
+
+    function displayProduct(myData){
+        let v = myData.map(function(value){
+            return `<tr><td>ID: ${value._id}</td><td>TITLE: ${value.title}</td><td>PRICE: $${value.price}</td><td>CATEGORY: ${value.category.name}</td></tr>`;
+        });
+        document.getElementById("Display").innerHTML = v.join(" ");
+    }
+
+    function searchData(){
+        let s = document.getElementById("inputData").value.toLowerCase();
+        let q = myArray.filter(function(value){
+            return value.title.toLowerCase().includes(s);
+        });
+        console.log(q);
+        displayProduct(q);
+    }
+
+    </script>
+</body>
+</html>
