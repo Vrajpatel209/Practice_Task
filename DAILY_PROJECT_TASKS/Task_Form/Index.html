@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="Style.css">
 </head>
 <body>
+    <form>
     <div id="MainSection">
         <h1>APPLICANT SIGN-IN</h1><br><br>
         
@@ -21,8 +22,8 @@
 
         <div id="eduInfo">
             <input type="text" name="educationlevel" placeholder="Institution Name #1" id="edu">
-            <input type="number" name="educationStart" placeholder="Start Year" id="edu">
-            <input type="number" name="educationEnd" placeholder="End Year" id="edu">
+            <input type="number" name="educationStart" placeholder="Start Year" class="edu">
+            <input type="number" name="educationEnd" placeholder="End Year" class="edu">
         </div><br>
         <button onclick="addMoreEdu()">ADD ANOTHER INSTITUTION DETAILS</button><br><br>
 
@@ -36,8 +37,9 @@
 
             <label for="resume">Profile Photo</label>
             <input type="file" name="resume-doc" id="resume-doc" accept=".jpg, .png" />
-        </div>
+        </div>
     </div>
+</form>
 
     <script>
         const addMoreEdu = () => {

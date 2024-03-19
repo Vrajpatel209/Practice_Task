@@ -5,7 +5,12 @@ body{
 
 #MainSection{
     text-align: center;
-    margin: 20px 360px;
+    margin: auto;
+    width: 50%;
+}
+form{
+    margin: auto;
+    width: 50%;
 }
 
 button{
@@ -25,5 +30,13 @@ button{
 #edu{
     border-style: solid;
     border-radius: 3px;
+    width: 40%;
+    padding: 10px 5px;
+}
+
+.edu{
+    border-style: solid;
+    border-radius: 3px;
+    width: 20%;
     padding: 10px 5px;
 }
