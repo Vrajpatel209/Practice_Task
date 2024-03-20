@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RECRUITER</title>
+    <link rel="stylesheet" href="Applicant.css" />
+  </head>
+  <body>
+    <form onsubmit="handlesubmit(event)">
+      <h2 id="basic-information-heading"><u>Recruiter Portal</u></h2>
+      <label>Name</label>
+      <input type="text" name="name" id="name" />
+      <label>Email</label>
+      <input type="text" name="email" id="email" />
+      <label>Password</label>
+      <input type="password" name="password" id="password" />
+      <label>Bio</label>
+      <input type="text" name="bio" id="bio" />
+      <label>Contact Number</label>
+      <input type="tel" name="contactNumber" id="contactNumber" />
+      <button type="submit">Submit</button>
+    </form>
+    <script>
+      const handlesubmit = (e) => {
+        e.preventDefault();
+        signUp();
+        // let obj = {};
+        // document.querySelectorAll("input").forEach((element) => {
+        //   obj[element.name] = element.value;
+        // });
+        // console.log(obj);
+      };
+
+      const signUp = () => {
+        const obj = {
+          email: document.getElementById("email").value,
+          password: document.getElementById("password").value,
+          type: "recruiter",
+          name: document.getElementById("name").value,
+          contactNumber: document.getElementById("contactNumber").value,
+          bio: document.getElementById("bio").value,
+        };
+
+        fetch("http://localhost:4444/auth/signup", {
+          method: "Post",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(obj),
+        }).then((y) => {
+          //location.href('Login.html')="Login.html"
+        });
+      };
+    </script>
+  </body>
+</html>

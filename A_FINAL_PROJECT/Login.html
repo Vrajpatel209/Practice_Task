@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LOGIN</title>
+    <link rel="stylesheet" href="Applicant.css" />
+  </head>
+  <body>
+    <form>
+      <label>Email</label>
+      <input type="text" name="email" id="email" />
+      <label>Password</label>
+      <input type="password" name="password" id="password" />
+      <button type="submit">Submit</button>
+    </form>
+    <script>
+        const handlesubmit = (e)=>{
+            e.preventDefault();
+            let obj= {};
+            document.querySelectorAll("input").forEach((element)=>{
+                obj[element.name]=element.value;
+            });
+            console.log(obj);
+        }
+    </script>
+  </body>
+</html>
