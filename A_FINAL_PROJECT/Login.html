@@ -12,10 +12,10 @@
       <input type="text" name="email" id="email" />
       <label>Password</label>
       <input type="password" name="password" id="password" />
-      <button type="submit" onclick="alogIn(event)">Submit</button>
+      <button type="submit" onclick="aLogIn(event)">Submit</button>
     </form>
     <script>
-      const alogIn = (e) => {
+      const aLogIn = (e) => {
         e.preventDefault();
         const obj = {
           email: document.getElementById("email").value,
