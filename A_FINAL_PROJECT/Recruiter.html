@@ -48,9 +48,13 @@
             "Content-Type": "application/json",
           },
           body: JSON.stringify(obj),
-        }).then((y) => {
-          location.href='Login.html';
-        });
+        })
+          .then((y) => y.json())
+          .then((y) => {
+            if (y.type) {
+              location.href = "Login.html";
+            } //location.href='Login.html';
+          });
       };
     </script>
   </body>
