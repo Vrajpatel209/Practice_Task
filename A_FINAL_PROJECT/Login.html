@@ -12,17 +12,29 @@
       <input type="text" name="email" id="email" />
       <label>Password</label>
       <input type="password" name="password" id="password" />
-      <button type="submit">Submit</button>
+      <button type="submit" onclick="alogIn(event)">Submit</button>
     </form>
     <script>
-        const handlesubmit = (e)=>{
-            e.preventDefault();
-            let obj= {};
-            document.querySelectorAll("input").forEach((element)=>{
-                obj[element.name]=element.value;
-            });
-            console.log(obj);
+      const alogIn = (e) => {
+        e.preventDefault();
+        const obj = {
+          email: document.getElementById("email").value,
+          password: document.getElementById("password").value,
         }
+        let a = JSON.stringify(obj);
+        console.log(a);
+        //localStorage.setItem('loginInfo', a);
+
+        fetch("http://localhost:4444/auth/login", {
+          method: "Post",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(obj),
+        }).then((y) => {
+          location.href = "Home.html";
+        });
+      };
     </script>
   </body>
 </html>
