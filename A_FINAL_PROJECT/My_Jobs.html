@@ -10,16 +10,54 @@
     <h1>MY JOBS</h1>
     <input type="search" placeholder="Search Jobs">
 
-    <form>
+    <button onclick="myJobs()">SHOW</button>
+    <form id="display">
         <h3 id="jobTitle">JavaScript</h3>
-        Role:<p></p>
-        Salary:<p></p>
-        Duration:<p></p>
-        Date of Posting:<p></p>
-        Number of Applicants:<p></p>
-        Number of Positions<p></p>
+        <p>Role: </p>
+        <p>Salary: </p>
+        <p>Duration: </p>
+        <p>Date of Posting: </p>
+        <p>Number of Applicants: </p>
+        <p>Number of Positions: </p>
 
         <button>View Application</button><button>Update Details</button><button>Delete Jobs</button>
+        </form>
+
+        <script>
+            const myJobs = () => {
+
+            let t = JSON.parse(localStorage.getItem('token')).token;
+            fetch("http://localhost:4444/api/jobs", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization":  `Bearer ${t}`
+          },
+        })
+          .then((y) => y.json())
+          .then((y) => {
+            display(y);
+
+          });
+          };
+
+          const display = (jobs) =>{
+            let d = jobs.map(function(value){
+                return `<form id="display">
+        <h3 id="jobTitle">${value.title}</h3>
+        <p>Role: ${value.jobType}</p>
+        <p>Salary: ${value.salary}</p>
+        <p>Duration: ${value.duration}</p>
+        <p>Date of Posting: ${value.dateOfPosting}</p>
+        <p>Number of Applicants: ${value.maxApplicants}</p>
+        <p>Number of Positions: ${value.maxPositions}</p>
+
+        <button>View Application</button><button>Update Details</button><button>Delete Jobs</button>
+        </form>`;
+            });
+            document.getElementById("display").innerHTML = d.join(" ");
+          }
+        </script>
     </form>
 </body>
 </html>

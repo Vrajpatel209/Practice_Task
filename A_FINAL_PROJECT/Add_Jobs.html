@@ -21,13 +21,13 @@
         <br /><br />
         <label>Duration</label>
         <select id="duration">
-          <option value="Flexible">Flexible</option>
-          <option value="1">Month</option>
-          <option value="2">Months</option>
-          <option value="3">Months</option>
-          <option value="4">Months</option>
-          <option value="5">Months</option>
-          <option value="6">Months</option>
+          <option value="0">Flexible</option>
+          <option value="1">1 Month</option>
+          <option value="2">2 Month</option>
+          <option value="3">3 Month</option>
+          <option value="4">4 Month</option>
+          <option value="5">5 Month</option>
+          <option value="6">6 Month</option>
         </select>
         <br /><br />
         <label>Salary</label>
@@ -85,10 +85,10 @@
 
             let t = JSON.parse(localStorage.getItem('token')).token;
             fetch("http://localhost:4444/api/jobs", {
-          method: "Post",
+          method: "POST",
           headers: {
             "Content-Type": "application/json",
-            "Authorization":  `Bearer${t}`
+            "Authorization":  `Bearer ${t}`
           },
           body: JSON.stringify(obj),
         })
