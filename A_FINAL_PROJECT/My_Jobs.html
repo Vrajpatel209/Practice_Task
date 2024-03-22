@@ -52,10 +52,16 @@
         <p>Number of Applicants: ${value.maxApplicants}</p>
         <p>Number of Positions: ${value.maxPositions}</p>
 
-        <button>View Application</button><button>Update Details</button><button>Delete Jobs</button>
+        <button>View Application</button><button onclick="toUpdateDetails()">Update Details</button><button>Delete Jobs</button>
         </form>`;
             });
             document.getElementById("display").innerHTML = d.join(" ");
+          }
+
+          function toUpdateDetails(){
+            //console.log("dff");
+            location.href = "Update_Details.html";
+            alert("Re-Directing to UpdateDetails Page");
           }
         </script>
     </form>
