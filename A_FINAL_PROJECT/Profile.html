@@ -1,24 +1,77 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>PROFILE</title>
-    <link rel="stylesheet" href="Applicant.css">
-</head>
-<body>
+    <link rel="stylesheet" href="Applicant.css" />
+  </head>
+  <body onload="getInputData()">
     <div>
-        <h2>Profile</h2>
-        <form>
-            <label>Name</label>
-            <input type="text" name="name" id="name"/>
+      <h2>Profile</h2>
+      <form>
+        <label>Name</label>
+        <input type="text" name="name" id="name" />
 
-            <label>Bio (upto 250 words)</label>
-            <input type="text" name="bio" id="bio"/>
+        <label>Bio (upto 250 words)</label>
+        <input type="text" name="bio" id="bio" />
 
-            <label>Phone</label>
-            <input type="number" name="phone" id="phone"/>
+        <label>Phone</label>
+        <input type="tel" name="contactNumber" id="contactNumber" />
 
-            <button onclick="">UPDATE DETAILS</button>
-        </form>
+        <button type="button" onclick="updateProfile()">UPDATE DETAILS</button>
+      </form>
     </div>
-</body>
+
+    <script>
+
+        let user = {};
+      const getInputData = () => {
+        let t = JSON.parse(localStorage.getItem("token")).token;
+        fetch("http://localhost:4444/api/user", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization" : `Bearer ${t}`
+          },
+        })
+          .then((y) => y.json())
+          .then((y) => {
+            console.log(y);
+            user = y;
+            display(y);
+
+          });
+      };
+
+      function display(y) {
+        document.getElementById("name").value = y.name;
+        document.getElementById("bio").value = y.bio;
+        document.getElementById("contactNumber").value = y.contactNumber;
+      }
+
+      
+     
+      const updateProfile = () => {
+        let t = JSON.parse(localStorage.getItem("token")).token;
+        const obj = {
+          name: document.getElementById("name").value,
+          contactNumber: document.getElementById("contactNumber").value,
+          bio: document.getElementById("bio").value,
+          _id: user._id
+        };
+
+        fetch("http://localhost:4444/api/user", {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${t}`
+          },
+          body: JSON.stringify(obj),
+        })
+          .then((y) => y.json())
+          .then((y) => {
+            console.log(y);
+          });
+      }
+    </script>
+  </body>
 </html>
