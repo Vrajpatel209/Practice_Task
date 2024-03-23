@@ -22,6 +22,7 @@
             return value.json();
         }).then(function (value) {
             myData = value;
+            //display(value);
             pagination(1);
             displayButton(value.length/document.getElementById("PageSize").value);
         });
