@@ -43,7 +43,7 @@
             let myJobs = () => {
 
             let t = JSON.parse(localStorage.getItem('token')).token;
-            fetch("http://localhost:4444/api/jobs", {
+            fetch("http://localhost:4444/api/jobs?myjobs=1", {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -84,7 +84,7 @@
   <label>Positions Available</label>
   <input type="number" name="positions" value="100" id="positions"/><br><br>
   
-  <button>UPDATE</button><button>CANCEL</button>
+  <button onclick="${UpdateJob(event)}">UPDATE</button><button>CANCEL</button>
 </form>
 </div>
        
@@ -93,6 +93,35 @@
             });
             document.getElementById("display").innerHTML = d.join(" ");
           }
+
+          
+          
+          let obj = {};
+          let 
+          const UpdateJob = (e) => {
+
+e.preventDefault();
+
+obj.deadline = document.getElementById('ApplicationD').value;
+obj.maxApplicants = document.getElementById('quantity').value;
+obj.maxPositions = document.getElementById('Pquantity').value;
+
+
+
+console.log(update.deadline, update.maxApplicants, update.maxPositions, update._id)
+
+fetch("http://localhost:4444/api/jobs/${obj._id}", {
+  method: "PUT",
+  headers: {
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${t}`
+  },
+  body: JSON.stringify(obj)
+}).then(y => y.json())
+  .then(y => {
+    console.log(y);
+    });
+  }
 
           // function toUpdateDetails(){
           //   //console.log("dff");
