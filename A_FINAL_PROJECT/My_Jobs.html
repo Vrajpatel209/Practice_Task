@@ -21,10 +21,26 @@
         <p>Number of Positions: </p>
 
         <button>View Application</button><button>Update Details</button><button>Delete Jobs</button>
-        </form>
+<div id="hiddenData">
+
+  <form >
+    <label>Application Deadline</label>
+    <input type="date" name="deadline" id="deadline"><br><br>
+    
+    <label>Maximum Number of Applicants</label>
+    <input type="number" name="applicants" value="100" id="applicants"/><br><br>
+    
+    <label>Positions Available</label>
+    <input type="number" name="positions" value="100" id="positions"/><br><br>
+    
+    <button>UPDATE</button><button>CANCEL</button>
+  </form>
+</div>
+    </form>
+
 
         <script>
-            const myJobs = () => {
+            let myJobs = () => {
 
             let t = JSON.parse(localStorage.getItem('token')).token;
             fetch("http://localhost:4444/api/jobs", {
@@ -36,13 +52,16 @@
         })
           .then((y) => y.json())
           .then((y) => {
+            // console.log(y);
+            myJobs = y
             display(y);
           });
           }
 
           const display = (jobs) =>{
-            let d = jobs.map(function(value){
-                return `<form id="display">
+            let d = jobs.map(function(value,index){
+                return `<div id="display">
+                <form>
         <h3 id="jobTitle">${value.title}</h3>
         <p>Role: ${value.jobType}</p>
         <p>Salary: ${value.salary}</p>
@@ -51,17 +70,46 @@
         <p>Number of Applicants: ${value.maxApplicants}</p>
         <p>Number of Positions: ${value.maxPositions}</p>
 
-        <button>View Application</button><button onclick="toUpdateDetails()">Update Details</button><button>Delete Jobs</button>
-        </form>`;
+        <button>View Application</button><button onclick="getData(${index},event)">Update Details</button><button>Delete Jobs</button>
+        <br>
+        <div id="hiddenData"><br>
+
+<form >
+  <label>Application Deadline</label>
+  <input type="date" name="deadline" id="deadline"><br><br>
+  
+  <label>Maximum Number of Applicants</label>
+  <input type="number" name="applicants" value="100" id="applicants"/><br><br>
+  
+  <label>Positions Available</label>
+  <input type="number" name="positions" value="100" id="positions"/><br><br>
+  
+  <button>UPDATE</button><button>CANCEL</button>
+</form>
+</div>
+       
+        </form>
+      </div>`;
             });
             document.getElementById("display").innerHTML = d.join(" ");
           }
 
-          function toUpdateDetails(){
-            //console.log("dff");
-            location.href = "Update_Details.html";
-            alert("Re-Directing to UpdateDetails Page");
+          // function toUpdateDetails(){
+          //   //console.log("dff");
+          //   location.href = "Update_Details.html";
+          //   alert("Re-Directing to UpdateDetails Page");
+          // }
+
+
+          const getData = (index,e) =>{
+            e.preventDefault();
+            let a = myJobs[index]
+            let b = document.querySelector('#hiddenData')
+            b.style.display = "block";
+            console.log(a);
           }
+
+
         </script>
     </form>
 </body>

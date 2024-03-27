@@ -22,7 +22,30 @@
     </div>
 
     <script>
-        
+        let user = {};
+      const getInputData = () => {
+        let t = JSON.parse(localStorage.getItem("token")).token;
+        fetch("http://localhost:4444/api/user", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization" : `Bearer ${t}`
+          },
+        })
+          .then((y) => y.json())
+          .then((y) => {
+            console.log(y);
+            user = y;
+            display(y);
+
+          });
+      };
+
+      function display(y) {
+        document.getElementById("name").value = y.name;
+        document.getElementById("bio").value = y.bio;
+        document.getElementById("contactNumber").value = y.contactNumber;
+      }
 
     </script>
 </body>
