@@ -1,66 +1,70 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MY_JOBS</title>
-    <link rel="stylesheet" href="Applicant.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MY_JOBS</title>
+  <link rel="stylesheet" href="Applicant.css">
 </head>
+
 <body onload="myJobs()">
-    <h1>MY JOBS</h1>
-    <input type="search" placeholder="Search Jobs">
+  <h1>MY JOBS</h1>
+  <input type="search" placeholder="Search Jobs">
 
-    <!-- <button onclick="myJobs()">SHOW</button> -->
-    <form id="display">
-        <h3 id="jobTitle">JavaScript</h3>
-        <p>Role: </p>
-        <p>Salary: </p>
-        <p>Duration: </p>
-        <p>Date of Posting: </p>
-        <p>Number of Applicants: </p>
-        <p>Number of Positions: </p>
+  <!-- <button onclick="myJobs()">SHOW</button> -->
+  <form id="display">
+    <h3 id="jobTitle">JavaScript</h3>
+    <p>Role: </p>
+    <p>Salary: </p>
+    <p>Duration: </p>
+    <p>Date of Posting: </p>
+    <p>Number of Applicants: </p>
+    <p>Number of Positions: </p>
 
-        <button>View Application</button><button>Update Details</button><button>Delete Jobs</button>
-<div id="hiddenData">
+    <button>View Application</button><button>Update Details</button><button>Delete Jobs</button>
+    <div id="hiddenData">
 
-  <form >
-    <label>Application Deadline</label>
-    <input type="date" name="deadline" id="deadline"><br><br>
-    
-    <label>Maximum Number of Applicants</label>
-    <input type="number" name="applicants" value="100" id="applicants"/><br><br>
-    
-    <label>Positions Available</label>
-    <input type="number" name="positions" value="100" id="positions"/><br><br>
-    
-    <button>UPDATE</button><button>CANCEL</button>
+      <form>
+        <label>Application Deadline</label>
+        <input type="date" name="deadline" id="deadline"><br><br>
+
+        <label>Maximum Number of Applicants</label>
+        <input type="number" name="applicants" value="100" id="applicants" /><br><br>
+
+        <label>Positions Available</label>
+        <input type="number" name="positions" value="100" id="positions" /><br><br>
+
+        <button>UPDATE</button><button>CANCEL</button>
+      </form>
+    </div>
   </form>
-</div>
-    </form>
 
 
-        <script>
-            let myJobs = () => {
+  <script>
+    let arr = [];
+    let t = JSON.parse(localStorage.getItem('token')).token;
+    let myJobs = () => {
 
-            let t = JSON.parse(localStorage.getItem('token')).token;
-            fetch("http://localhost:4444/api/jobs?myjobs=1", {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization":  `Bearer ${t}`
-          },
-        })
-          .then((y) => y.json())
-          .then((y) => {
-            // console.log(y);
-            myJobs = y
-            display(y);
-          });
-          }
 
-          const display = (jobs) =>{
-            let d = jobs.map(function(value,index){
-                return `<div id="display">
+      fetch("http://localhost:4444/api/jobs?myjobs=1", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${t}`
+        },
+      })
+        .then((y) => y.json())
+        .then((y) => {
+          // console.log(y);
+          arr = y
+          display(arr);
+        });
+    }
+
+    const display = (jobs) => {
+      let d = jobs.map(function (value, index) {
+        return `<div id="display">
                 <form>
         <h3 id="jobTitle">${value.title}</h3>
         <p>Role: ${value.jobType}</p>
@@ -70,7 +74,7 @@
         <p>Number of Applicants: ${value.maxApplicants}</p>
         <p>Number of Positions: ${value.maxPositions}</p>
 
-        <button>View Application</button><button onclick="getData(${index},event)">Update Details</button><button>Delete Jobs</button>
+        <button>View Application</button><button type="submit" onclick="getData(${index})">Update Details</button><button>Delete Jobs</button>
         <br>
         <div id="hiddenData"><br>
 
@@ -84,62 +88,71 @@
   <label>Positions Available</label>
   <input type="number" name="positions" value="100" id="positions"/><br><br>
   
-  <button onclick="${UpdateJob(event)}">UPDATE</button><button>CANCEL</button>
+  <button type="submit" onclick="${UpdateJob(event)}">UPDATE</button><button>CANCEL</button>
 </form>
 </div>
        
         </form>
       </div>`;
-            });
-            document.getElementById("display").innerHTML = d.join(" ");
-          }
-
-          
-          
-          let obj = {};
-          let 
-          const UpdateJob = (e) => {
-
-e.preventDefault();
-
-obj.deadline = document.getElementById('ApplicationD').value;
-obj.maxApplicants = document.getElementById('quantity').value;
-obj.maxPositions = document.getElementById('Pquantity').value;
+      });
+      document.getElementById("display").innerHTML = d.join(" ");
+    }
 
 
 
-console.log(update.deadline, update.maxApplicants, update.maxPositions, update._id)
+    let obj = {};
+    const UpdateJob = (e) => {
 
-fetch("http://localhost:4444/api/jobs/${obj._id}", {
-  method: "PUT",
-  headers: {
-    'Content-Type': 'application/json',
-    'Authorization': `Bearer ${t}`
-  },
-  body: JSON.stringify(obj)
-}).then(y => y.json())
-  .then(y => {
-    console.log(y);
-    });
-  }
+      //e.preventDefault();
 
-          // function toUpdateDetails(){
-          //   //console.log("dff");
-          //   location.href = "Update_Details.html";
-          //   alert("Re-Directing to UpdateDetails Page");
-          // }
+      obj.deadline = document.getElementById('deadline').value;
+      obj.maxApplicants = document.getElementById('applicants').value;
+      obj.maxPositions = document.getElementById('positions').value;
 
 
-          const getData = (index,e) =>{
-            e.preventDefault();
-            let a = myJobs[index]
-            let b = document.querySelector('#hiddenData')
-            b.style.display = "block";
-            console.log(a);
-          }
+
+      //console.log(update.deadline, update.maxApplicants, update.maxPositions, update._id)
+
+      fetch(`http://localhost:4444/api/jobs/${obj._id}`, {
+        method: "PUT",
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${t}`
+        },
+        body: JSON.stringify(obj)
+      }).then(y => y.json())
+        .then(y => {
+          console.log(y);
+          console.log(obj)
+        });
+    }
+
+    // function toUpdateDetails(){
+    //   //console.log("dff");
+    //   location.href = "Update_Details.html";
+    //   alert("Re-Directing to UpdateDetails Page");
+    // }
 
 
-        </script>
-    </form>
+    const getData = (index) => {
+      
+      let a = arr[index]
+      a = obj;
+      let b = document.querySelectorAll('#hiddenData')
+      b.style.display = "block";
+      console.log(a);
+      dis(a)
+    }
+
+    const dis = (y) => {
+      document.getElementById('deadline').value = y.deadline;
+      document.getElementById('applicants').value = y.maxApplicants;
+      document.getElementById('positions').value = y.maxPositions;
+    }
+
+
+  </script>
+  </form>
 </body>
+
 </html>
